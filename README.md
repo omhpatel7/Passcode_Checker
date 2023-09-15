@@ -29,3 +29,5 @@ To use the Password Checker, follow these steps:
 ## Disclaimer
 
 This tool is provided for educational and demonstration purposes. It may not cover all aspects of security and should not be used as a sole method for evaluating password strength in a production environment. Users should exercise caution and follow best practices for password security.
+
+Courtesy: Online Tutorials
