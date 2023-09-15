@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Passcode Strength Evaluator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Passcode Evaluator</h2>
+        <div class="inputBox">
+            <input type="password" placeholder="Passcode"
+            id="myPassword">
+            <div class="show"></div>
+        </div>
+        <div class="strengthMeter"></div>
+    </div>
+
+    <script>
+        function Stren(password){
+            let j = 0;
+            
+            if(password.length == 0){
+                return 0;
+            }
+            if(password.length > 6){
+                j++;
+            }
+            if(password.length >= 10){
+                j++;
+            }
+            if(/[A-Z]/.test(password)){
+                j++;
+            }
+            if(/[0-9]/.test(password)){
+                j++;
+            }
+            if(/[A-Za-z0-8]/.test(password)){
+                j++;
+            }
+            if(/[!@#$%^&*()_+{}\[\]:;<>,.?/~\\]/.test(password)){
+                j++
+            }
+
+            return j;
+        }
+
+        let container = document.querySelector('.container');
+        document.addEventListener("keyup", function(e){
+            let password = document.querySelector('#myPassword').value
+
+            let strength = Stren(password);
+            
+            if (strength == 0){
+                container.classList.remove('Weak');
+                container.classList.remove('Medium');
+                container.classList.remove('Strong');
+            } else if (strength <= 2){
+                container.classList.add('Weak');
+                container.classList.remove('Medium');
+                container.classList.remove('Strong');
+            } else if (strength >= 2 && strength <= 4){
+                container.classList.remove('Weak');
+                container.classList.add('Medium');
+                container.classList.remove('Strong');
+            } else {
+                container.classList.remove('Weak');
+                container.classList.remove('Medium');
+                container.classList.add('Strong');
+            }
+        })
+        
+
+        let pass = document.querySelector('#myPassword');
+        let show = document.querySelector('.show');
+        show.onclick = function(){
+            if (pass.type === 'password'){
+                pass.setAttribute('type', 'text');
+                show.classList.add('hide');
+            } else {
+                pass.setAttribute('type', 'password');
+                show.classList.remove('hide');
+            }
+        }
+    </script>
+</body>
+</html>
