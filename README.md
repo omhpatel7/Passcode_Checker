@@ -1,6 +1,5 @@
 # Password Checker
 
-![Password Checker Logo](password-checker-logo.png)
 
 ## Overview
 
