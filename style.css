@@ -1,118 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-*
-{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body
-{
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #222;
+    background: linear-gradient(to bottom, #4a90e2, #2c3e50); /* Gradient background */
 }
-.container
-{
+
+.container {
     position: relative;
     width: 400px;
     padding: 30px;
-    background: #333;
+    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid #111;
-    gap: 10px;
-    padding-bottom: 70px;
-    -webkit-box-reflect: below 1px linear-gradient (transparent, transparent, #0005) ;
-    filter: drop-shadow(0 0 1px #fff) 
+    border: 1px solid #333; /* Dark border */
+    gap: 20px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Soft box shadow */
 }
-.container h2
-{
-    color: #666;
-    font-weight: 500;
+
+.container h2 {
+    color: #fff;
+    font-weight: 600; /* Slightly bolder font weight */
+    font-size: 28px; /* Larger font size */
+    text-align: center;
 }
-.container .inputBox
-{
+
+.container .inputBox {
     position: relative;
     width: 100%;
 }
-.container .inputBox input
-{
+
+.container .inputBox input {
     position: relative;
     width: 100%;
-    background: #222;
+    background: #333;
     border: none;
     outline: none;
-    padding: 10px;
-    color: #fff;   
+    padding: 12px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px; /* Larger font size */
 }
-.container .strengthMeter
-{
-    position: absolute;
-    bottom: 0;
-    left: 0;
+
+.container .strengthMeter {
+    position: relative;
     width: 100%;
-    height: 3px;
-    background: #222;
+    height: 10px;
+    background: #444; /* Slightly darker background */
+    border-radius: 5px;
+    overflow: hidden;
 }
-.container .strengthMeter::before
-{
+
+.container .strengthMeter::before {
     content: '';
     position: absolute;
     width: 0%;
     height: 100%;
     transition: 0.5s;
     background: #f00;
+    border-radius: 5px;
 }
-.container.Weak .strengthMeter::before
-{
-    width: 10%;
+
+.container.Weak .strengthMeter::before {
+    width: 20%; /* Wider bar for "Weak" */
     background: #f00;
-    filter: drop-shadow(0 0 5px #f00) drop-shadow(0 0 10 px #f00) drop-shadow(0 0 20px #f00);
 }
-.container.Medium .strengthMeter::before
-{
-    width: 66.66%;
+
+.container.Medium .strengthMeter::before {
+    width: 70%; /* Wider bar for "Medium" */
     background: #ffa500;
-    filter: drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10 px #ffa500) drop-shadow(0 0 20px #ffa500);
 }
-.container.Strong .strengthMeter::before
-{
+
+.container.Strong .strengthMeter::before {
     width: 100%;
     background: #0f0;
-    filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 10 px #0f0) drop-shadow(0 0 20px #0f0);
 }
-.container .strengthMeter::after
-{
+
+.container .strengthMeter::after {
     position: absolute;
-    top: -45px;
-    left: 30px;
+    top: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
     color: #fff;
-    transition: 0.5s;
+    font-size: 16px;
 }
-.container.Weak .strengthMeter::after
-{
-    content: 'Your Passcode is Weak';
+
+.container.Weak .strengthMeter::after {
+    content: 'Weak';
     color: #f00;
-    filter: drop-shadow(0 0 5px #f00);
 }
-.container.Medium .strengthMeter::after
-{
-    content: 'Your Passcode is Ok';
+
+.container.Medium .strengthMeter::after {
+    content: 'Medium';
     color: #ffa500;
-    filter: drop-shadow(0 0 5px #ffa500);
 }
-.container.Strong .strengthMeter::after
-{
-    content: 'Your Passcode is Strong';
+
+.container.Strong .strengthMeter::after {
+    content: 'Strong';
     color: #0f0;
-    filter: drop-shadow(0 0 5px #0f0);
 }
-.show
-{
+
+.show {
     position: absolute;
     top: 0;
     right: 0;
@@ -124,16 +125,58 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
-.show::before
-{
+
+.show::before {
     content: 'Show';
-    font-size: 0.6em;
+    font-size: 0.8em; /* Larger font size */
     color: #fff;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em; /* Slightly smaller letter spacing */
     text-transform: uppercase;
 }
-.show.hide::before
-{
+
+.show.hide::before {
     content: 'Hide';
+}
+
+/* Add styles for the professional "Copy" button */
+.container .copyButton {
+    display: block;
+    width: 100%;
+    background: #3498db; /* Blue color for the button background */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 14px; /* Increase padding for better clickability */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s; /* Add a transition for the background color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow for depth */
+}
+
+.container .copyButton:hover {
+    background: #2980b9; /* Darker blue color on hover */
+}
+
+.container .copyButton:active {
+    background: #1f618d; /* Even darker blue color when clicked */
+}
+
+/* Adjust the position of the button */
+.container .copyButton {
+    margin-top: 15px; /* Increase margin for spacing */
+}
+
+
+
+/* Add transitions to enhance the user experience */
+.container,
+.inputBox,
+.strengthMeter::before,
+.strengthMeter::after,
+.show {
+    transition: 0.3s;
 }
