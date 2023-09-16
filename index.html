@@ -13,33 +13,21 @@
             <div class="show"></div>
         </div>
         <div class="strengthMeter"></div>
+        <button id="copyButton" class="copyButton copy-button-hidden">Copy</button> <!-- Add the Copy button with the "copy-button-hidden" class -->
     </div>
 
     <script>
         function Stren(password){
             let j = 0;
             
-            if(password.length == 0){
-                return 0;
-            }
-            if(password.length > 6){
-                j++;
-            }
-            if(password.length >= 10){
-                j++;
-            }
-            if(/[A-Z]/.test(password)){
-                j++;
-            }
-            if(/[0-9]/.test(password)){
-                j++;
-            }
-            if(/[A-Za-z0-8]/.test(password)){
-                j++;
-            }
-            if(/[!@#$%^&*()_+{}\[\]:;<>,.?/~\\]/.test(password)){
-                j++
-            }
+            if (password.length > 6) j++;
+            if (password.length >= 11) j++;
+            if (password.length >= 17) j++;
+            if (password.length >= 27) j++;
+            if (/[\d]/.test(password)) j++;
+            if (/[A-Z]/.test(password)) j++;
+            if (/[a-z]/.test(password)) j++;
+            if (/[\W_]/.test(password)) j++;
 
             return j;
         }
@@ -81,6 +69,14 @@
                 show.classList.remove('hide');
             }
         }
+
+        let copyButton = document.getElementById('copyButton');
+        copyButton.addEventListener('click', function() {
+            let passwordInput = document.getElementById('myPassword');
+            passwordInput.select();
+            document.execCommand('copy');
+            alert('Password copied to clipboard!');
+        });
     </script>
 </body>
 </html>
