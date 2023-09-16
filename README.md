@@ -24,7 +24,7 @@ To use the Password Checker, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/omhpatel7/Passcord_Checker.git
+   git clone https://github.com/omhpatel7/Passcode_Checker.git
 
 ## Disclaimer
 
